@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="2056,934" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="2056,996" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -105,19 +105,20 @@
       <AssemblyReference>UiPath.Activities.Contracts</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="642,869" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Processo que utiliza o excel para envio de emails." DisplayName="Envio de emails" sap:VirtualizedContainerService.HintSize="642,931" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="580,758" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="listaEmail.xlsx">
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="580,789" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="listaEmail.xlsx">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="546,648" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="546,679" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="ListaEmail" />
             </Sequence.Variables>
@@ -133,13 +134,13 @@
                 </InArgument>
               </ui:ExcelReadRange.Range>
             </ui:ExcelReadRange>
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[ListaEmail]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="484,437" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[ListaEmail]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="484,468" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,322" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,353" sap2010:WorkflowViewState.IdRef="Sequence_3">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:String" Name="senha" />
                     </Sequence.Variables>
@@ -149,10 +150,15 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <ui:GetPassword DisplayName="Get Password" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="GetPassword_1" ProtectedPassword="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAiidgC383L0uVPuXa82xoFAAAAAACAAAAAAAQZgAAAAEAACAAAADpOWXSvwQ2jJ569UIPn64D42dR2OT3fi32qua0+7CAPAAAAAAOgAAAAAIAACAAAAA3PjyjthphyTPJ9RpP4YpYBQlbmzupDP1wD9rF9nsa/CAAAABrMymbe+QoDgeIDMZpfYeGWv+0fsO6Zy6ibYt2nsJyR0AAAACMMb6KnLI6XrZY1QoSbmJEJsXXpdvbn1Yp0DMx6kmx7OUTXjqEtWM25WvBQMTBsotKGI9jyhb/7O7BS2B2NQlH" Result="[senha]" />
-                    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" Result="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" Body="[&quot;Olá, &quot; + CurrentRow(&quot;nome&quot;).ToString + vbNewLine + vbNewLine + &quot;Só para lembrar que você possui uma conta no valor de R$&quot; + CurrentRow(&quot;debito&quot;).ToString + &quot; que irá vencer no dia &quot; + CurrentRow(&quot;vencimento&quot;).ToString+ &quot;.&quot;]" DisplayName="Send SMTP Mail Message" Email="sccrepaldi@gmail.com" EnableSSL="True" sap:VirtualizedContainerService.HintSize="388,146" sap2010:WorkflowViewState.IdRef="SendMail_1" IgnoreCRL="False" IsBodyHtml="False" Password="[senha]" Port="587" SecureConnection="Auto" Server="smtp.gmail.com" Subject="[CurrentRow(&quot;assunto&quot;).ToString]" To="[CurrentRow(&quot;email&quot;).ToString]">
+                    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" Result="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" sap2010:Annotation.AnnotationText="Para cada linha da ListaEmail os dados se alteram." Body="[&quot;Olá, &quot; + CurrentRow(&quot;nome&quot;).ToString + vbNewLine + vbNewLine + &quot;Só para lembrar que você possui uma conta no valor de R$&quot; + CurrentRow(&quot;debito&quot;).ToString + &quot; que irá vencer no dia &quot; + CurrentRow(&quot;vencimento&quot;).ToString+ &quot;.&quot;]" DisplayName="Send SMTP Mail Message" Email="sccrepaldi@gmail.com" EnableSSL="True" sap:VirtualizedContainerService.HintSize="388,177" sap2010:WorkflowViewState.IdRef="SendMail_1" IgnoreCRL="False" IsBodyHtml="False" Password="[senha]" Port="587" SecureConnection="Auto" Server="smtp.gmail.com" Subject="[CurrentRow(&quot;assunto&quot;).ToString]" To="[CurrentRow(&quot;email&quot;).ToString]">
                       <ui:SendMail.Files>
                         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                       </ui:SendMail.Files>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
                     </ui:SendMail>
                   </Sequence>
                 </ActivityAction>
